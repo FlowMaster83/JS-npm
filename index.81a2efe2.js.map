@@ -1,0 +1,1 @@
+{"mappings":"AACAA,QAAQC,IADI,CAAC,EAAG,EAAG,EAAG,EAAG,EAAG","sources":["src/js/ownPractice/export.js"],"sourcesContent":["const arr = [0, 1, 2, 3, 4, 5]\nconsole.log(arr);"],"names":["console","log"],"version":3,"file":"index.81a2efe2.js.map"}
