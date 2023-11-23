@@ -411,12 +411,12 @@ const cars = [
 
 // ===========
 
-// // filter() - возвращает каждый элемент итерации, если условие = true
+// filter() - возвращает каждый элемент итерации, если условие = true
 // const filterByPrice = (cars, threshold) => {
 //   return cars.filter(({ price }) => price < threshold);
 // };
 
-// // все машины, цена которых ниже...
+// все машины, цена которых ниже...
 // console.log(filterByPrice(cars, 30000));
 // console.log(filterByPrice(cars, 25000));
 
