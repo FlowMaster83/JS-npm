@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/styles.css rel="stylesheet" type="text/css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/index.html">Back</a>
+    <div>
+      <p>
+        <div class="text-rules">
+        При загрузке изображения в консоли может появиться сообщение об ошибке:
+        «DevTools failed to load SourceMap: Could not load content for
+        chrome-extension://…». Это сообщение об ошибке не связано с самим кодом
+        страницы и не оказывает влияния на работу кода.
+        </div>
+        
+        <br>
+
+        <div class="text-rules">
+        Оно возникает из-за того, что некоторые расширения Chrome используют
+        Source Maps для упрощения отладки своего JavaScript кода.
+        </div>
+        
+        <br>
+        
+        <div class="text-rules">
+        Если Source Map отсутствует или недоступен, DevTools выводит это
+        сообщение об ошибке. Чтобы избавиться от этого сообщения об ошибке,
+        можно отключить загрузку Source Maps в настройках DevTools. Для этого
+        необходимо выполнить следующие действия: Открыть DevTools (F12 или
+        Ctrl+Shift+I). Перейти в настройки DevTools (F1 или Shift+?). В разделе
+        «Sources» снять галочку с «Enable JavaScript source maps» и «Enable CSS
+        source maps». Закрыть и открыть DevTools. Также стоит отметить, что если
+        расширение Chrome, вызывающее эту ошибку, важно для разработки или
+        тестирования, его Source Maps можно добавить вручную, чтобы избежать
+        этой ошибки. Но это уже более сложное решение, и оно потребуется не всем
+        разработчикам. В общем случае, это сообщение об ошибке не мешает работе
+        кода и может быть безопасно проигнорировано, если у вас нет
+        необходимости в отладке расширений Chrome.
+      </div>
+      </p>
+    </div>
+    <a href="/index.html">Back</a>
+  </body>
+</html>
