@@ -555,57 +555,96 @@ false - не добавляется в новый массив
 // const result = words.filter((word) => word.length > 6);
 // console.log(result); // ["exuberant", "destruction", "present"]
 
-const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-const result2 = arr.filter((element) => element < 5)
-console.log(result2);
+// ===========
+
+// const arr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+// const result2 = arr.filter((element) => element < 5)
+// console.log(result2);
+
+// ===========
+
+// // Изменение всех элементов
+// let words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+
+// const modifiedWords = words.filter((word, index, arr) => {
+//   arr[index + 1] += " extra";
+//   return word.length < 6;
+// });
+
+// console.log(modifiedWords);
+// // Обратите внимание, что есть три слова длиной менее 6, но так как они были изменены,
+// // возвращается одно слово ['spray']
+
+// ===========
+
+// // Добавление новых элементов
+// words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+// const appendedWords = words.filter((word, index, arr) => {
+//   arr.push("new")
+//   return word.length < 6;
+// });
+
+// console.log(appendedWords);
+// // Только три слова удовлетворяют условию, хотя `words` теперь имеет куда больше слов,
+// // длинной меньше 6 символов: ['spray', 'limit', 'elite']
+
+// ===========
+
+// // Удаление элементов
+// words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+// const deleteWords = words.filter((word, index, arr) => {
+//   arr.pop();
+//   return word.length < 6;
+// });
+
+// console.log(deleteWords);
+// // Заметьте, что 'elite' не получено, так как удалено из `words` до того,
+// // как filter смог получить его: ['spray', 'limit']
+
+// ===============================================
+
+// const items = ["item1", "item2", "item3"];
+// const copy = [];
+
+// // до
+// for (let i = 0; i < items.length; i++) {
+//   copy.push(items[i]);
+//   console.log(items[i] + ' is result')
+// }
+
+// // после
+// const result3 = items.forEach(function (item) {
+//   copy.push(item);
+//   console.log(item + ' is result')
+// });
+
+// ===============================================
+
+// const numbers = [1,2,3,4,5]
+
+// let result = []
+// for (let i = 1; i < numbers.length + 1; i++) {
+//   result.push(i * 4)
+// }
+
+// console.log(result);
+
+// const result2 = numbers.map(function mul(element) {
+//   return element * 4;
+// })
+// console.log(result2);
 
 
-// Изменение всех элементов
-let words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
+const result = add(2, 3)
 
-const modifiedWords = words.filter((word, index, arr) => {
-  arr[index + 1] += " extra";
-  return word.length < 6;
-});
-
-console.log(modifiedWords);
-// Обратите внимание, что есть три слова длиной менее 6, но так как они были изменены,
-// возвращается одно слово ['spray']
-
-// Добавление новых элементов
-words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
-const appendedWords = words.filter((word, index, arr) => {
-  arr.push("new")
-  return word.length < 6;
-});
-
-console.log(appendedWords);
-// Только три слова удовлетворяют условию, хотя `words` теперь имеет куда больше слов,
-// длинной меньше 6 символов: ['spray', 'limit', 'elite']
-
-// Удаление элементов
-words = ["spray", "limit", "exuberant", "destruction", "elite", "present"];
-const deleteWords = words.filter((word, index, arr) => {
-  arr.pop();
-  return word.length < 6;
-});
-
-console.log(deleteWords);
-// Заметьте, что 'elite' не получено, так как удалено из `words` до того,
-// как filter смог получить его: ['spray', 'limit']
-
-
-const items = ["item1", "item2", "item3"];
-const copy = [];
-
-// до
-for (let i = 0; i < items.length; i++) {
-  copy.push(items[i]);
-  console.log(items[i] + ' is result')
+function add(a, b) {
+  return a + b
 }
 
-// после
-const result3 = items.forEach(function (item) {
-  copy.push(item);
-  console.log(item + ' is result')
-});
+console.log(result);
+
+const added = function (x, y) {
+  return x * y;
+}
+
+console.log(added(2, 1))
