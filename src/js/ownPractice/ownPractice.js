@@ -635,16 +635,63 @@ false - не добавляется в новый массив
 // console.log(result2);
 
 
-const result = add(2, 3)
+// const result = add(2, 3)
 
-function add(a, b) {
-  return a + b
-}
+// function add(a, b) {
+//   return a + b
+// }
 
-console.log(result);
+// console.log(result);
 
-const added = function (x, y) {
-  return x * y;
-}
+// const added = function (x, y) {
+//   return x * y;
+// }
 
-console.log(added(2, 1))
+// console.log(added(2, 1))
+
+// ===================
+
+// // setitem - добавить
+// // getItem - получить
+// // removeItem - удалить
+// // clear - очистить
+
+// // НЕ функция (и не метод объекта)
+
+// // объязательно привести в строку JSON.stringify!!!
+// localStorage.setItem('TEST_KEY', JSON.stringify([1,2,3,4]))
+// console.log(JSON.parse(localStorage.getItem('TEST_KEY')))
+
+// // объект
+// localStorage.setItem('TEST_KEY_1', JSON.stringify({name: 'hello'}))
+// console.log(JSON.parse(localStorage.getItem('TEST_KEY_1')));
+
+// localStorage.removeItem('TEST_KEY_1') // используется часто
+
+// // очистка (в случае логаута) - clear (редко)
+// // localStorage.clear()
+
+// ===================
+
+// const local = document.querySelector('.js-local')
+// const session = document.querySelector('.js-session')
+
+// local.addEventListener('click', () => {
+// localStorage.setItem('local', 'test local')
+// })
+
+// session.addEventListener('click', () => {
+// sessionStorage.setItem('session', 'test session')
+// })
+
+// const third = document.querySelector('.js-third')
+// third.addEventListener('click', () => {
+// localStorage.setItem('first', 'second')
+// })
+
+// const fourth = document.querySelector('.js-fourth')
+// fourth.addEventListener('click', () => {
+// sessionStorage.setItem('fourth', 'fifth')
+// })
+
+// ===================
