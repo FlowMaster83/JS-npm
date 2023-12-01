@@ -536,7 +536,7 @@ false - не добавляется в новый массив
 // function convertToInteger(str) {
 //   return parseInt(str)
 //   }
-  
+
 // console.log(convertToInteger("56"));
 
 // ===========
@@ -546,7 +546,7 @@ false - не добавляется в новый массив
 //   : num < 0 ? 'negative'
 //   : 'zero'
 // }
-  
+
 // (checkSign(10));
 
 // ===============================================
@@ -634,7 +634,6 @@ false - не добавляется в новый массив
 // })
 // console.log(result2);
 
-
 // const result = add(2, 3)
 
 // function add(a, b) {
@@ -695,3 +694,87 @@ false - не добавляется в новый массив
 // })
 
 // ===================
+
+// АСИНХРОННОСТЬ
+
+// колстек проверяет тип функции
+// если синхронная - выполняется
+// если асинх - отправляется в WEB API
+// потом попадает в очередь и ждёт выполнения всех синх функций
+// весь асинх код будет всегда выполнен после синх
+
+// for (let i = 3; i > 0; i--) {
+//     const delay = i * 1000
+//     setTimeout(() => console.log(i), delay)
+// }
+
+// ===================
+
+setTimeout(() => {
+    console.log('Прошло >= 3 секунд после автосейва')
+}, 3000)
+
+// ===================
+
+// console.log('start');
+
+// setTimeout(() => {
+//     console.log('SetTimeout');
+// }, 2000);
+
+// console.log('finish'); // 1. старт, 2. финиш, 3. SetTimeout
+
+// ===================
+
+// console.time('test async')
+
+// console.log('start')
+
+// setTimeout(() => {
+//     console.log('setTimeout')
+// }, 0)
+
+// for (let i = 0; i < 10000; i += 1) {
+//     console.log('value', i)
+// }
+
+// console.timeEnd(
+//     'test async'
+// ) /* выполняется синх, доходит до асинх, отправляет асинх в апи, после задержки отпрпавляет в очередь, выполняется после выполнения всего синх */
+
+// ===================
+
+// const date = new Date()
+// console.log('new Date()', date) // возвращает объект с датой на англ (удобно, чтобы получить какие-то значения)
+// const currentDate = Date.now()
+// console.log('Date.now()', currentDate) // возвращает кол-во милисекунду с 1 янв 1970 года (UTC)
+
+// ===================
+
+// Months
+const date = new Date()
+
+console.log(date.getMonth()) // 11 (декабрь) - возвращает месяц с нуля до 11 (вид массива), то есть декабрь - 11, апрель - 3
+const months = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+]
+
+console.log(months[date.getMonth()]) // Dec
+
+// ===================
+
+// Days
+
+const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+console.log(days[date.getDay()]) // Fri - счет ведётся с воскресенья (0 индекс)
