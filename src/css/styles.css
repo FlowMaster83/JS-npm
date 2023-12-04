@@ -1,4 +1,4 @@
-.logo {
+/* .logo {
   color: grey;
 }
 
@@ -27,4 +27,16 @@ ul {
 
 .tog{
   display: none;
+} */
+
+.js-container {
+    display: flex;
+    justify-content: center;
+}
+
+.item {
+    border: 5px black;
+    width: 50px;
+    height: 50px;
+    padding: 10%;
 }

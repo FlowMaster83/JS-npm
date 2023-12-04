@@ -710,9 +710,9 @@ false - не добавляется в новый массив
 
 // ===================
 
-setTimeout(() => {
-    console.log('Прошло >= 3 секунд после автосейва')
-}, 3000)
+// setTimeout(() => {
+//     console.log('Прошло >= 3 секунд после автосейва')
+// }, 3000)
 
 // ===================
 
@@ -752,29 +752,251 @@ setTimeout(() => {
 // ===================
 
 // Months
-const date = new Date()
+// const date = new Date()
 
-console.log(date.getMonth()) // 11 (декабрь) - возвращает месяц с нуля до 11 (вид массива), то есть декабрь - 11, апрель - 3
-const months = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-]
+// console.log(date.getMonth()) // 11 (декабрь) - возвращает месяц с нуля до 11 (вид массива), то есть декабрь - 11, апрель - 3
+// const months = [
+//     'Jan',
+//     'Feb',
+//     'Mar',
+//     'Apr',
+//     'May',
+//     'Jun',
+//     'Jul',
+//     'Aug',
+//     'Sep',
+//     'Oct',
+//     'Nov',
+//     'Dec',
+// ]
 
-console.log(months[date.getMonth()]) // Dec
+// console.log(months[date.getMonth()]) // Dec
 
 // ===================
 
-// Days
+// // Days
 
-const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-console.log(days[date.getDay()]) // Fri - счет ведётся с воскресенья (0 индекс)
+// const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+// console.log(days[date.getDay()]) // Fri - счет ведётся с воскресенья (0 индекс)
+
+// ===================
+
+// // promises
+// const promise = new Promise((resolve, reject) => {
+//     reject('Oops')
+// })
+
+// promise.then(value => console.log(value)) // Uncaught (in promise) Oops
+
+// ===================
+
+// 1. Мікропроцеси мають більший пріоритет ніж макро
+// 2. Мікро: promise, observer
+// 3. Макро: setTimeout, setInterval, setImmediate, requestAnimationFrame
+
+// console.log('1')
+
+// setTimeout(() => console.log('2'), 0)
+
+// Promise.resolve('3').then(value => console.log(value))
+
+// console.log('4')
+
+// // 1 4 3 2
+// // синх, асинх: промис (микро), асинх:сеуттаймаут (макро)
+
+// ===================
+
+// console.log('1')
+
+// setTimeout(() => console.log('2'), 10)
+
+// Promise.resolve('3').then(value => console.log(value))
+// Promise.reject('4')
+//     .then(value => console.log(value))
+//     .catch(err => console.log(err))
+// Promise.resolve('5').then(value => console.log(value))
+
+// setTimeout(() => console.log('6'), 0)
+
+// console.log('7')
+
+// reject менеее приоритетный чем resolve
+// then требует внутри коллбек
+// нативный промисы используется в игровой разработке
+// приоритетность определяет очередь в event loop
+// 1 7 3 5 4 6 2
+
+// ===================
+
+// console.log('1')
+
+// setTimeout(() => {
+//     console.log('2')
+//     Promise.resolve('3').then(value => console.log(value))
+// }, 10)
+
+// console.log('4')
+
+// // промис попадает в очередь после выполнения resolve или reject
+// // синх, сеттаймаут идёт в апи, выполняется коллбек-функция сеттаймаута, возвращается 2, выполняется промис
+
+// ===================
+
+// // промис - обещание
+// // представитель класса
+// // 99% используется при запросе на бекенд
+// // 3 состояния промиса (2 типа событий)
+// // 1. Пендинг
+// // 2. Выполнение (3. resolve или fulfilled, reject)
+
+// // функция-экзекьютор (переданная функция для экземпляра промиса)
+// const promise = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         const value = Math.random()
+
+//         if (value > 0.5) {
+//             resolve('Yeeeeees')
+//         } else {
+//             reject('Nooooo')
+//         }
+//     }, 1000)
+// })
+
+// // при отправке запроса на бекенд, промис в статусе пендинг, при получении - промис сам определяет статус
+
+// console.log(promise) // pending
+
+// // обрабатывается с помощью:
+// // then (принимает 2 коллбек-функции: resolve, reject (при этом в кетч он не попадёт)),
+// // catch,
+// // finally
+
+// // then всегда идёт первым, далее catch или finally
+// // каждый then возвращает промис
+
+// // структура: 1. список then(параметр удачного выполнения промиса), далее catch(параметр неудачного выполнения промиса) или finally(нет параметров)
+// promise
+//     .then(value => {
+//         return value + ' 😊'
+//     })
+//     .then(value => {
+//         console.log(value, qwerty)
+//     })
+//     .then(() => {
+//         console.log('last then')
+//     })
+//     .catch(err => {
+//         console.error(err)
+//     })
+//     .finally(() => {
+//         console.log('after')
+//     }) // не принимает параметры (выполняет общее действие при then и catch)
+
+// ===================
+
+// // создаем запрос на бекенд
+// // метод fetch
+// const promise = fetch('https://pokeapi.co/api/v2/pokemon/ditto')
+// console.log(promise) // {<pending>}
+
+// // возврат объекта, в котором есть асинх json (который обрабатывается в следующем then)
+// promise
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(err => console.log(err))
+
+// ===================
+
+const start = document.querySelector('.js-start')
+const container = document.querySelector('.js-container')
+
+start.addEventListener('click', onStart)
+
+// function onStart() {
+//     const result = []
+//     ;[...container.children].forEach(box => (box.textContent = ''))
+//     ;[...container.children].forEach((box, i) => {
+//         createPromise(i)
+//             .then(smile => {
+//                 box.textContent = smile
+//                 result.push('1')
+//             })
+//             .catch(smile => {
+//                 box.textContent = smile
+//             })
+//             .finally(() => {
+//                 setTimeout(() => {
+//                     if (i === container.children.length - 1) {
+//                         if (!result.length || result.length === 3) {
+//                             alert('Winner')
+//                         } else {
+//                             alert('Lost money')
+//                         }
+//                     }
+//                 }, 500)
+//             })
+//     })
+// }
+
+// function createPromise(delay) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             const random = Math.random()
+
+//             if (random > 0.1) {
+//                 resolve('🍎')
+//             } else {
+//                 reject('🍉')
+//             }
+//         }, 1000 * delay)
+//     })
+// }
+
+// ===================
+//  методы промисов (11 модуль):
+
+// Promise.all() - если все промисы були успешны (если reject, падает в ошибку)
+// Promise.race() - возвращает первый самый быстрый промис
+// Promise.allSettled() - как Promise.all(), но обрабатывает все промисы и добавляет пометку статуса.
+
+function onStart() {
+    let counter = 0
+
+    ;[...container.children].forEach(box => (box.textContent = ''))
+
+    const promises = [...container.children].map((_, i) => createPromise(i))
+
+    Promise.allSettled(promises).then(items => {
+        items.forEach((item, i) => {
+            setTimeout(() => {
+                if (item.status === 'fulfilled') {
+                    counter += 1
+                }
+                container.children[i].textContent = item.value || item.reason
+
+                if (container.children.length - 1 === i) {
+                    setTimeout(() => {
+                        if (counter === container.children.length || !counter) {
+                            alert('Winner')
+                        } else {
+                            alert('Lost money')
+                        }
+                    }, 500)
+                }
+            }, i * 1000)
+        })
+    })
+}
+
+function createPromise() {
+    return new Promise((resolve, reject) => {
+        const random = Math.random()
+
+        if (random > 0.99) {
+            resolve('🍎')
+        } else {
+            reject('🍉')
+        }
+    })
+}
