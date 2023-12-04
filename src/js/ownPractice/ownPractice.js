@@ -993,7 +993,7 @@ function createPromise() {
     return new Promise((resolve, reject) => {
         const random = Math.random()
 
-        if (random > 0.99) {
+        if (random > 0.2) {
             resolve('🍎')
         } else {
             reject('🍉')
