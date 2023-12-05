@@ -908,10 +908,10 @@ false - не добавляется в новый массив
 
 // ===================
 
-const start = document.querySelector('.js-start')
-const container = document.querySelector('.js-container')
+// const start = document.querySelector('.js-start')
+// const container = document.querySelector('.js-container')
 
-start.addEventListener('click', onStart)
+// start.addEventListener('click', onStart)
 
 // function onStart() {
 //     const result = []
@@ -954,49 +954,55 @@ start.addEventListener('click', onStart)
 // }
 
 // ===================
+
 //  методы промисов (11 модуль):
 
 // Promise.all() - если все промисы були успешны (если reject, падает в ошибку)
 // Promise.race() - возвращает первый самый быстрый промис
 // Promise.allSettled() - как Promise.all(), но обрабатывает все промисы и добавляет пометку статуса.
 
-function onStart() {
-    let counter = 0
+// ===================
 
-    ;[...container.children].forEach(box => (box.textContent = ''))
+// // казино
+// function onStart() {
+//     let counter = 0
 
-    const promises = [...container.children].map((_, i) => createPromise(i))
+//     ;[...container.children].forEach(box => (box.textContent = ''))
 
-    Promise.allSettled(promises).then(items => {
-        items.forEach((item, i) => {
-            setTimeout(() => {
-                if (item.status === 'fulfilled') {
-                    counter += 1
-                }
-                container.children[i].textContent = item.value || item.reason
+//     const promises = [...container.children].map((_, i) => createPromise(i))
 
-                if (container.children.length - 1 === i) {
-                    setTimeout(() => {
-                        if (counter === container.children.length || !counter) {
-                            alert('Winner')
-                        } else {
-                            alert('Lost money')
-                        }
-                    }, 500)
-                }
-            }, i * 1000)
-        })
-    })
-}
+//     Promise.allSettled(promises).then(items => {
+//         items.forEach((item, i) => {
+//             setTimeout(() => {
+//                 if (item.status === 'fulfilled') {
+//                     counter += 1
+//                 }
+//                 container.children[i].textContent = item.value || item.reason
 
-function createPromise() {
-    return new Promise((resolve, reject) => {
-        const random = Math.random()
+//                 if (container.children.length - 1 === i) {
+//                     setTimeout(() => {
+//                         if (counter === container.children.length || !counter) {
+//                             alert('Winner')
+//                         } else {
+//                             alert('Lost money')
+//                         }
+//                     }, 500)
+//                 }
+//             }, i * 1000)
+//         })
+//     })
+// }
 
-        if (random > 0.2) {
-            resolve('🍎')
-        } else {
-            reject('🍉')
-        }
-    })
-}
+// function createPromise() {
+//     return new Promise((resolve, reject) => {
+//         const random = Math.random()
+
+//         if (random > 0.2) {
+//             resolve('🍎')
+//         } else {
+//             reject('🍉')
+//         }
+//     })
+// }
+
+// ===================
